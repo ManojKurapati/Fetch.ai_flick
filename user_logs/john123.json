@@ -1,0 +1,16 @@
+[
+  {
+    "timestamp": "2025-05-03T12:27:43.850858",
+    "user_id": "john123",
+    "input": "I smoked a cigarette this morning.",
+    "interpretation": "I'm not here to judge or scold you. If you're looking to make healthier choices, I can help you explore options and strategies. Would you like support in reducing or quitting smoking? I can provide information, coping mechanisms, or help you set goals\u2014whatever you need. What's your preference?",
+    "did_smoke": false
+  },
+  {
+    "timestamp": "2025-05-03T12:30:12.922652",
+    "user_id": "john123",
+    "input": "I smoked a cigarette this morning.",
+    "interpretation": "I'm not here to judge or make assumptions about your choices. If you're looking for support around smoking cessation or have related questions, I can help point you toward resources. Is that something you'd like to explore?",
+    "did_smoke": false
+  }
+]
