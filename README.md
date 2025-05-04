@@ -15,7 +15,7 @@ HabitDestroyer is an AI-powered app built using **AgentVerse** and **Transact AI
 2. Send : Agent sends the funds to Aave/Compound for 20 days.
 3. Track : Users self-report habit lapses via daily prompts.
 4. Reward :
-   - Success: Principal + yield returned to user.
+   - Success: Principal returned to user.
    - Lapse: Funds redirected to a reward pool for successful users.
 
 ---
@@ -47,9 +47,87 @@ HabitDestroyer is an AI-powered app built using **AgentVerse** and **Transact AI
 
 ---
 
-🛠️ Setup (Coming Soon)
+🛠️ Setup
 
 Instructions to deploy and configure agents via AgentVerse.
+📡 HabitDestroyer – API Usage Guide
+
+https://agentverse.ai/agents/details/agent1qtnkwjnp9umdnk2tnsgu3apn8k2w4jacnv5ryjrjyndwunqyskqwc324sfn/profile
+
+This API triggers the HabitDestroyer pipeline built on AgentVerse + Transact AI, which:
+
+Locks a user’s stake in escrow
+
+Sends it to Aave or Compound for yield
+
+Monitors the user's habit behavior
+
+Returns principal
+
+🔗 Endpoint URL
+bash
+Copy
+Edit
+POST https://api.agentverse.ai/v1/run/
+(Replace with https://agentverse.ai/agents/details/agent1qtnkwjnp9umdnk2tnsgu3apn8k2w4jacnv5ryjrjyndwunqyskqwc324sfn/profile
+)
+
+🔐 Authentication
+You’ll need an API Key .
+
+Header Example:
+
+http
+Copy
+Edit
+Authorization: Bearer YOUR_API_KEY
+Content-Type: application/json
+📥 Request Body
+json
+Copy
+Edit
+{
+  "user_id": "u12345",
+  "habit": "smoking",
+  "stake_amount": 50,
+  "wallet_address": "0xYourWalletAddress",
+  "escrow_duration_days": 20
+}
+Field Descriptions:
+Field	Type	Description
+user_id	string	Unique user identifier
+habit	string	The habit user is trying to break (e.g., vaping)
+stake_amount	number	Amount staked in USD equivalent
+wallet_address	string	User's crypto wallet for returns
+escrow_duration_days	number	Number of days to lock funds (default: 20)
+
+✅ Sample cURL Request
+curl -X POST https://api.agentverse.ai/v1/run/habitdestroyer-pipeline \
+  -H "Authorization: Bearer YOUR_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "user_id": "u12345",
+    "habit": "smoking",
+    "stake_amount": 50,
+    "wallet_address": "0xAbc123456789",
+    "escrow_duration_days": 20
+}'
+🔄 Example Response
+json
+Copy
+Edit
+{
+  "status": "initiated",
+  "message": "Escrow created. Stake sent to Aave.",
+  "transaction_id": "txn_9483xhf9s",
+  "next_check": "2025-05-25"
+}
+🧪 Testing Tips
+Use Postman or Insomnia to test the endpoint.
+
+Use AgentVerse’s Playground to simulate and debug flows before deploying to production.
+
+
 
 ---
 🤝 License
