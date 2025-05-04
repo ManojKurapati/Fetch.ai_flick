@@ -91,7 +91,6 @@ escrow_duration_days	number	Number of days to lock funds (default: 20)
 
 
 🧪 Testing Tips
-Use Postman or Insomnia to test the endpoint.
 
 Use AgentVerse’s Playground to simulate and debug flows before deploying to production.
 
